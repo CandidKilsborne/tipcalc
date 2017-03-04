@@ -91,6 +91,7 @@
                     <connections>
                         <outlet property="billAmountTextField" destination="Nhx-9X-WBU" id="OAm-LR-KBi"/>
                         <outlet property="tipAmountLabel" destination="3rT-2D-hG8" id="OiS-P9-6XZ"/>
+                        <outlet property="tipPercentSelector" destination="O6I-M1-Jak" id="3an-lw-qKL"/>
                         <outlet property="totalAmountLabel" destination="23e-z6-8QC" id="SwV-6s-2Fk"/>
                     </connections>
                 </viewController>
