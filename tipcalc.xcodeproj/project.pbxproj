@@ -12,6 +12,7 @@
 		CAA7E7701E6B1D43000B1267 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA7E76E1E6B1D43000B1267 /* Main.storyboard */; };
 		CAA7E7721E6B1D43000B1267 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA7E7711E6B1D43000B1267 /* Assets.xcassets */; };
 		CAA7E7751E6B1D43000B1267 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA7E7731E6B1D43000B1267 /* LaunchScreen.storyboard */; };
+		CAA7E77D1E6B6E4B000B1267 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7E77C1E6B6E4B000B1267 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		CAA7E7711E6B1D43000B1267 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA7E7741E6B1D43000B1267 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAA7E7761E6B1D43000B1267 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAA7E77C1E6B6E4B000B1267 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				CAA7E76A1E6B1D43000B1267 /* AppDelegate.swift */,
 				CAA7E76C1E6B1D43000B1267 /* ViewController.swift */,
 				CAA7E76E1E6B1D43000B1267 /* Main.storyboard */,
+				CAA7E77C1E6B6E4B000B1267 /* SettingsViewController.swift */,
 				CAA7E7711E6B1D43000B1267 /* Assets.xcassets */,
 				CAA7E7731E6B1D43000B1267 /* LaunchScreen.storyboard */,
 				CAA7E7761E6B1D43000B1267 /* Info.plist */,
@@ -139,6 +142,7 @@
 			files = (
 				CAA7E76D1E6B1D43000B1267 /* ViewController.swift in Sources */,
 				CAA7E76B1E6B1D43000B1267 /* AppDelegate.swift in Sources */,
+				CAA7E77D1E6B6E4B000B1267 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
