@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var lowTipTextField: UITextField!
+    @IBOutlet weak var medTipTextField: UITextField!
+    @IBOutlet weak var highTipTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,13 @@ class SettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    let userPercents: [Int] = []
+    
+    let defaults = UserDefaults.standard
+    defaults.set(0, forKey: "lowTip")
+    defaults.set(1, forKey: "medTip")
+    defaults.set(2, forKey: "highTip")
+    defaults.synchronize()
 
     /*
     // MARK: - Navigation

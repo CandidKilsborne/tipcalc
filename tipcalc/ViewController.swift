@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let defaults = UserDefaults.standard
+        _ = defaults.object(forKey: "low") as! String
+        _ = defaults.integer(forKey: "another_key_that_you_choose")
     }
 
     override func didReceiveMemoryWarning() {
