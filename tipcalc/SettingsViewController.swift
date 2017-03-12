@@ -14,18 +14,46 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var medTipTextField: UITextField!
     @IBOutlet weak var highTipTextField: UITextField!
     
+    var usersTipPercentages = [Float]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let defaults = UserDefaults.standard
+        
+        if(defaults.bool(forKey: "lowTip")) {
+            let low = defaults.float(forKey: "lowTip")
+            usersTipPercentages.append(low)
+        } else {
+            let low = 0.15
+            usersTipPercentages.append(Float(low))
+        }
+        
+        if(defaults.bool(forKey: "medTip")) {
+            let med = defaults.float(forKey: "medTip")
+            usersTipPercentages.append(med)
+        } else {
+            let med = 0.2
+            usersTipPercentages.append(Float(med))
+        }
+        
+        if(defaults.bool(forKey: "highTip")) {
+            let high = defaults.float(forKey: "highTip")
+            usersTipPercentages.append(high)
+        } else {
+            let high = 0.25
+            usersTipPercentages.append(Float(high))
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
-    let userPercents: [Int] = []
+    let userPercents: [Float] = []
     
     let defaults = UserDefaults.standard
     defaults.set(0, forKey: "lowTip")
@@ -33,14 +61,5 @@ class SettingsViewController: UIViewController {
     defaults.set(2, forKey: "highTip")
     defaults.synchronize()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

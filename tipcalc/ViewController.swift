@@ -15,18 +15,61 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var tipPercentSelector: UISegmentedControl!
     
+    var usersTipPercentages = [Float]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         let defaults = UserDefaults.standard
-        _ = defaults.object(forKey: "low") as! String
-        _ = defaults.integer(forKey: "another_key_that_you_choose")
+        
+        if(defaults.bool(forKey: "lowTip")) {
+            let low = defaults.float(forKey: "lowTip")
+            usersTipPercentages.append(low)
+        } else {
+            let low = 0.15
+            usersTipPercentages.append(Float(low))
+        }
+        
+        if(defaults.bool(forKey: "medTip")) {
+            let med = defaults.float(forKey: "medTip")
+            usersTipPercentages.append(med)
+        } else {
+            let med = 0.2
+            usersTipPercentages.append(Float(med))
+        }
+        
+        if(defaults.bool(forKey: "highTip")) {
+            let high = defaults.float(forKey: "highTip")
+            usersTipPercentages.append(high)
+        } else {
+            let high = 0.25
+            usersTipPercentages.append(Float(high))
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("view did disappear")
     }
     
 
@@ -34,9 +77,9 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     @IBAction func calculateTip(_ sender: UITextField) {
-        let tipPercentages = [0.15, 0.2, 0.25]
+        let tipPercentages = usersTipPercentages
         
-        let bill = Double(billAmountTextField.text!) ?? 0
+        let bill = Float(billAmountTextField.text!) ?? 0
         let tip = bill * tipPercentages[tipPercentSelector.selectedSegmentIndex]
         let total = bill + tip
         
