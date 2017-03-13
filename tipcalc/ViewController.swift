@@ -55,30 +55,43 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("view will appear")
+        let defaults = UserDefaults.standard
+        
+        if(defaults.bool(forKey: "lowTip")) {
+            let low = defaults.float(forKey: "lowTip")
+            tipPercentSelector.setTitle(String(Int(low * 100)) + "%", forSegmentAt: 0)
+            usersTipPercentages[0] = low
+        } else {
+            let low = 0.15
+            tipPercentSelector.setTitle(String(Int(low * 100)) + "%", forSegmentAt: 0)
+            usersTipPercentages[0] = Float(low)
+        }
+        
+        if(defaults.bool(forKey: "medTip")) {
+            let med = defaults.float(forKey: "medTip")
+            tipPercentSelector.setTitle(String(Int(med * 100)) + "%", forSegmentAt: 1)
+            usersTipPercentages[1] = med
+        } else {
+            let med = 0.2
+            tipPercentSelector.setTitle(String(Int(med * 100)) + "%", forSegmentAt: 1)
+            usersTipPercentages[1] = Float(med)
+        }
+        
+        if(defaults.bool(forKey: "highTip")) {
+            let high = defaults.float(forKey: "highTip")
+            tipPercentSelector.setTitle(String(Int(high * 100)) + "%", forSegmentAt: 2)
+            usersTipPercentages[2] = high
+        } else {
+            let high = 0.25
+            tipPercentSelector.setTitle(String(Int(high * 100)) + "%", forSegmentAt: 2)
+            usersTipPercentages[2] = Float(high)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        print("view will disappear")
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        print("view did disappear")
-    }
-    
-
-    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
-    }
-    @IBAction func calculateTip(_ sender: UITextField) {
-        let tipPercentages = usersTipPercentages
         
+        let tipPercentages = usersTipPercentages
         let bill = Float(billAmountTextField.text!) ?? 0
         let tip = bill * tipPercentages[tipPercentSelector.selectedSegmentIndex]
         let total = bill + tip
@@ -87,6 +100,22 @@ class ViewController: UIViewController {
         totalAmountLabel.text = String(format: "$%.2f", total)
     }
 
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    @IBAction func calculateTip(_ sender: AnyObject) {
+        let tipPercentages = usersTipPercentages
+        print(sender)
+        let bill = Float(billAmountTextField.text!) ?? 0
+        let tip = bill * tipPercentages[tipPercentSelector.selectedSegmentIndex]
+        print("\(tip)")
+        print(tipPercentages[tipPercentSelector.selectedSegmentIndex])
+        let total = bill + tip
+        
+        tipAmountLabel.text = String(format: "$%.2f", tip)
+        totalAmountLabel.text = String(format: "$%.2f", total)
+    }
 
 }
 

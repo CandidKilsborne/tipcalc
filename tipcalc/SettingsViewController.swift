@@ -23,26 +23,26 @@ class SettingsViewController: UIViewController {
         
         if(defaults.bool(forKey: "lowTip")) {
             let low = defaults.float(forKey: "lowTip")
-            usersTipPercentages.append(low)
+            lowTipTextField.text = String(Int(low * 100))
         } else {
             let low = 0.15
-            usersTipPercentages.append(Float(low))
+            lowTipTextField.text = String(Int(low * 100))
         }
         
         if(defaults.bool(forKey: "medTip")) {
             let med = defaults.float(forKey: "medTip")
-            usersTipPercentages.append(med)
+            medTipTextField.text = String(Int(med * 100))
         } else {
             let med = 0.2
-            usersTipPercentages.append(Float(med))
+            medTipTextField.text = String(Int(med * 100))
         }
         
         if(defaults.bool(forKey: "highTip")) {
             let high = defaults.float(forKey: "highTip")
-            usersTipPercentages.append(high)
+            highTipTextField.text = String(Int(high * 100))
         } else {
             let high = 0.25
-            usersTipPercentages.append(Float(high))
+            highTipTextField.text = String(Int(high * 100))
         }
 
         
@@ -53,13 +53,26 @@ class SettingsViewController: UIViewController {
 
     }
     
-    let userPercents: [Float] = []
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+        usersTipPercentages = [Float(lowTipTextField.text!)! / 100, Float(medTipTextField.text!)! / 100, Float(highTipTextField.text!)! / 100]
+        saveUserPercents()
+    }
     
-    let defaults = UserDefaults.standard
-    defaults.set(0, forKey: "lowTip")
-    defaults.set(1, forKey: "medTip")
-    defaults.set(2, forKey: "highTip")
-    defaults.synchronize()
-
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("view did disappear")
+    }
+    
+    func saveUserPercents() {
+        let defaults = UserDefaults.standard
+        
+        defaults.set(usersTipPercentages[0], forKey: "lowTip")
+        defaults.set(usersTipPercentages[1], forKey: "medTip")
+        defaults.set(usersTipPercentages[2], forKey: "highTip")
+        
+        defaults.synchronize()
+    }
 
 }
