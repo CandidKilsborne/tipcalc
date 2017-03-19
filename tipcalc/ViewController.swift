@@ -16,9 +16,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipPercentSelector: UISegmentedControl!
     
     var usersTipPercentages = [Float]()
+    let currentLocale = NSLocale.current
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(currentLocale)
 
         let defaults = UserDefaults.standard
         
